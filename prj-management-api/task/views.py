@@ -1,13 +1,22 @@
 from django.shortcuts import render
 from rest_framework import generics
 from django.contrib.auth.models import User
-from .serializers import TaskSerializer, AssignUserTaskSerializer
+from .serializers import TaskSerializer, AssignUserTaskPostSerializer, AssignUserTaskGetSerializer
+from .models import Task, AssignUserTask
 
 # Create your views here.
-class TaskView(generics.CreateAPIView):
-    queryset = User.objects.all()
+class TaskView(generics.ListCreateAPIView):
+    queryset = Task.objects.all()
     serializer_class = TaskSerializer
 
-class AssignUserTaskView(generics.CreateAPIView):
-    queryset = User.objects.all()
-    serializer_class = AssignUserTaskSerializer
+class AssignUserTaskListCreate(generics.ListCreateAPIView):
+    queryset = AssignUserTask.objects.all()
+    serializer_class = AssignUserTaskGetSerializer
+
+   
+
+class AssignUserTaskRetrieveUpdateDestroy(generics.RetrieveUpdateDestroyAPIView):
+    queryset = AssignUserTask.objects.all()
+    serializer_class = AssignUserTaskPostSerializer
+
+

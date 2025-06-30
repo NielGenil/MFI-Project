@@ -6,7 +6,15 @@ class TaskSerializer(serializers.ModelSerializer):
         model = Task
         fields = '__all__'
 
-class AssignUserTaskSerializer(serializers.ModelSerializer):
+class AssignUserTaskPostSerializer(serializers.ModelSerializer):
     class Meta:
         model = AssignUserTask
         fields = '__all__'
+        # depth = 1
+
+class AssignUserTaskGetSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = AssignUserTask
+        depth = 1
+        fields = '__all__'
+        

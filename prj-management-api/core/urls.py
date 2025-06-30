@@ -24,7 +24,8 @@ from rest_framework_simplejwt.views import (
 
 from rest_framework_simplejwt.views import TokenVerifyView
 
-from task.views import TaskView, AssignUserTaskView
+from task.views import TaskView, AssignUserTaskListCreate, AssignUserTaskRetrieveUpdateDestroy
+from user.views import RegisterView, UserView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -35,5 +36,10 @@ urlpatterns = [
 
     #task
     path('api/task/', TaskView.as_view()),
-    path('api/assign-user-task/', AssignUserTaskView.as_view()),
+    path('api/assign-user-task/', AssignUserTaskListCreate.as_view()),
+    path('api/assign-user-task/<int:pk>/', AssignUserTaskRetrieveUpdateDestroy.as_view()),
+
+    #User
+    path('api/user/', UserView.as_view()),
+    # path('api/register-user/', RegisterView.as_view()),
 ]

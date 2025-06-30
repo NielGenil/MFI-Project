@@ -23,3 +23,38 @@ export const TaskAPI = async (data) => {
   return await response.json();
 };
 
+// export const getTask = async () => {
+//   const response = await fetch(`${BASE_URL}/api/task/`);
+//   return await response.json();
+// };
+
+
+export const getTask = async() => {
+    const response = await fetch(`${BASE_URL}/api/task/`);
+    const res = await response.json();
+    console.log(res);
+    return res;
+};
+
+export const getUser = async() => {
+    const response = await fetch(`${BASE_URL}/api/user/`);
+    const res = await response.json();
+    console.log(res);
+    return res;
+};
+
+export const getAssignUserTaskAPI = async() => {
+    const response = await fetch(`${BASE_URL}/api/assign-user-task/`);
+    const res = await response.json();
+    console.log(res);
+    return res;
+};
+
+export const AssignUserTaskAPI = async (data) => {
+  const response = await fetch(`${BASE_URL}/api/assign-user-task/`, {
+    method: "POST",
+    body: data, // browser sets the correct multipart/form-data headers
+  });
+
+  return await response.json();
+};
